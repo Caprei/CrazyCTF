@@ -4,8 +4,8 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.caprei.crazyctf.ability.BlockShot;
-import me.caprei.crazyctf.ability.CannonShot;
+import me.caprei.crazyctf.abilities.BlockShot;
+import me.caprei.crazyctf.abilities.CannonShot;
 import me.caprei.crazyctf.utils.ChatUtils;
 
 public class Engineer extends CTFClass{

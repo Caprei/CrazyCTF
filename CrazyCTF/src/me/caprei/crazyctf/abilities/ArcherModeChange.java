@@ -1,4 +1,4 @@
-package me.caprei.crazyctf.ability;
+package me.caprei.crazyctf.abilities;
 
 import java.util.HashMap;
 import java.util.Map;

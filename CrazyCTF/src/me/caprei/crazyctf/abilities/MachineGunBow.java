@@ -1,4 +1,4 @@
-package me.caprei.crazyctf.ability;
+package me.caprei.crazyctf.abilities;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

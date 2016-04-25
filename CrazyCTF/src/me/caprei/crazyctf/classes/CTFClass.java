@@ -7,7 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
-import me.caprei.crazyctf.ability.Ability;
+import me.caprei.crazyctf.abilities.Ability;
 
 public abstract class CTFClass implements Listener{
 	

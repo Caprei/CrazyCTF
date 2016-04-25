@@ -1,4 +1,4 @@
-package me.caprei.crazyctf.ability;
+package me.caprei.crazyctf.abilities;
 
 public class AbilityCooldown {
 

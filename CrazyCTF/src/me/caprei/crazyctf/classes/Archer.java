@@ -5,10 +5,10 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.caprei.crazyctf.ability.ArcherModeChange;
-import me.caprei.crazyctf.ability.ExplosiveBow;
-import me.caprei.crazyctf.ability.MachineGunBow;
-import me.caprei.crazyctf.ability.SniperBow;
+import me.caprei.crazyctf.abilities.ArcherModeChange;
+import me.caprei.crazyctf.abilities.ExplosiveBow;
+import me.caprei.crazyctf.abilities.MachineGunBow;
+import me.caprei.crazyctf.abilities.SniperBow;
 import me.caprei.crazyctf.utils.ChatUtils;
 
 public class Archer extends CTFClass {
