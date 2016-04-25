@@ -5,11 +5,21 @@ import org.bukkit.World;
 
 public class Map {
 	
+	private String name;
 	private Location redSpawn;
 	private Location blueSpawn;
 	private Location redFlag;
 	private Location blueFlag;
 	private World world = redSpawn.getWorld();
+	
+	public Map(String name, Location redSpawn, Location blueSpawn, Location redFlag, Location blueFlag){
+		this.name = name;
+		this.redSpawn = redSpawn;
+		this.blueSpawn = blueSpawn;
+		this.redFlag = redFlag;
+		this.blueFlag = blueFlag;
+	}
+	
 	public Location getRedSpawn() {
 		return redSpawn;
 	}
@@ -37,7 +47,8 @@ public class Map {
 	public void setBlueFlag(Location blueFlag) {
 		this.blueFlag = blueFlag;
 	}
-	public void setWorld(World world) {
-		this.world = world;
+
+	public String getName(){
+		return name;
 	}
 }

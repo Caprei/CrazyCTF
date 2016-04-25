@@ -11,7 +11,6 @@ import me.caprei.crazyctf.utils.ChatUtils;
 public class Engineer extends CTFClass{
 	
 	public Engineer(){
-		setMenuMaterial();
 		setWearableItems();
 		setInventoryItems();
 		setAbilities();
@@ -48,10 +47,5 @@ public class Engineer extends CTFClass{
 		abilities.add(new CannonShot());
 		abilities.add(new BlockShot());
 		
-	}
-
-	@Override
-	public void setMenuMaterial() {
-		menuMaterial = Material.DISPENSER;
 	}
 }

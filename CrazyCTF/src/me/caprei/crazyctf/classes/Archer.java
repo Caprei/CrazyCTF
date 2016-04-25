@@ -14,16 +14,9 @@ import me.caprei.crazyctf.utils.ChatUtils;
 public class Archer extends CTFClass {
 		
 	public Archer(){
-		setMenuMaterial();
 		setWearableItems();
 		setInventoryItems();
 		setAbilities();
-	}
-
-	@Override
-	public void setMenuMaterial() {
-		menuMaterial = Material.BOW;
-		
 	}
 
 	@Override
@@ -45,7 +38,7 @@ public class Archer extends CTFClass {
 		inventoryItems.add(bow);
 		inventoryItems.add(new ItemStack(Material.ARROW, 1));
 	}
-
+	
 	@Override
 	public void setAbilities() {
 		abilities.add(new SniperBow());

@@ -7,22 +7,31 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitTask;
 
+import me.caprei.crazyctf.classes.CTFClass;
+import me.caprei.crazyctf.classes.ClassManager;
+import me.caprei.crazyctf.map.Lobby;
 import me.caprei.crazyctf.team.Team;
 
 public class CTFPlayerEvents implements Listener{
 	
 	BukkitTask countdown;
+	public static boolean suddenDeath = false;
 	
 	@EventHandler
 	public void onPlayerJoinEvent(PlayerJoinEvent event){
 		Player player = event.getPlayer();
-		GamePlayer gamePlayer = new GamePlayer(player, 0, 0, 0, 0, 0, 0); //TODO INSERT LOGIC FOR GETTING FROM CONFIG
+		GamePlayer gamePlayer = new GamePlayer(player, 0, 0, 0, 0, 0, 0);
 		PlayerManager.getPlayerManager().addPlayer(gamePlayer);
 		if(GameStateManager.getManager().validStart()){
 			countdown = GameStateManager.getManager().beginCountdown();
@@ -70,8 +79,34 @@ public class CTFPlayerEvents implements Listener{
         
         if(location.distanceSquared(GameStateManager.getManager().getCurrentMap().getBlueFlag()) <= 1.5){
         	if(gamePlayer.getTeam() == Team.RED){
-        		//TODO GIVE THEM THE FLAG
+        		player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 1));
         	}
         }
 	}
+	
+	@EventHandler
+	public void onPlayerDie(PlayerDeathEvent event){
+		event.setDeathMessage("");
+		event.setDroppedExp(0);
+		Player player = event.getEntity();
+		GamePlayer gamePlayer = PlayerManager.getPlayerManager().getGamePlayer(player);
+		CTFClass ctfClass = gamePlayer.getKit().getClassInstance();
+		for(ItemStack drop:event.getDrops()){
+			if(ctfClass.getInventoryItems().contains(drop) || ctfClass.getWearableItems().contains(drop)){
+				event.getDrops().remove(drop);
+			}
+		}
+		event.setKeepLevel(true);
+	}
+	
+	@EventHandler
+	public void onPlayerRespawn(PlayerRespawnEvent event){
+		if(!suddenDeath){
+		ClassManager.assignKit(PlayerManager.getPlayerManager().getGamePlayer(event.getPlayer()));
+		}else{
+			event.getPlayer().teleport(Lobby.getSpawnPoint());
+		}
+	}
+	
+	
 }

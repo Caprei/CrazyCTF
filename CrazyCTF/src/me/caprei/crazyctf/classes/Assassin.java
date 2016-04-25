@@ -1,16 +1,8 @@
 package me.caprei.crazyctf.classes;
 
-import org.bukkit.Material;
-
 public class Assassin extends CTFClass{
 	
 	public Assassin(){
-		
-	}
-
-	@Override
-	public void setMenuMaterial() {
-		menuMaterial = Material.REDSTONE;
 		
 	}
 
@@ -30,6 +22,5 @@ public class Assassin extends CTFClass{
 	public void setAbilities() {
 		// TODO Auto-generated method stub
 		
-	}
-	
+	}	
 }
